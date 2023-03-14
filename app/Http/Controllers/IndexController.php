@@ -9,7 +9,7 @@ class IndexController extends Controller
 {
     public function index()
     {
-        $algorithms = Cypher::all();
+        $algorithms = Cypher::where('show_status', '1')->get();
         $count = $algorithms->count();
 
         return view('cryptool.index')->with(['ciphers' => $algorithms, 'count' => $count]);
@@ -20,9 +20,9 @@ class IndexController extends Controller
         $search = $request->search;
 
         if ($search == '') {
-            $algorithms = Cypher::all();
+            $algorithms = Cypher::where('show_status', '1')->get();
         } else {
-            $algorithms = Cypher::where('name', 'like', '%' . $search . '%')->get();
+            $algorithms = Cypher::where('show_status', '1')->where('name', 'like', '%' . $search . '%')->get();
         }
 
         $count = $algorithms->count();

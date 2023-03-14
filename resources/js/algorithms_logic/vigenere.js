@@ -1,90 +1,63 @@
-function stringToIntList(string)
-{
-    var s = [];
-    for (var i = 0; i < string.length; i++) {
-        s[i] = string.charCodeAt(i);
-    }
-    return s;
-}
-function intsToCharList(integers)
-{
-    var ints = [];
-    for (var i = 0; i < integers.length; i++) {
-        ints[i] = String.fromCharCode(integers[i]);
-    }
-    return ints;
-}
-export function encrip(text, key, cipher)
-{
-    text = stringToIntList(text.val());
-    key = stringToIntList(key.val());
-    var table = makeTable();
-    var keyChar = 0;
-    var message = [];
-    while(message.length<text.length) {
-        for(var i = 0; i < text.length; i++) {
-            var row = table[0].indexOf(key[keyChar]);
-            var col = table[0].indexOf(text[i]);
-            message[message.length] = table[row][col];
-            if (keyChar<key.length-1) {
-                keyChar++;
-            } else {
-                keyChar = 0;
-            }
-        }
-    }
-    message = intsToCharList(message).join("");
-    cipher.val(message);
-}
-function decrip(text, key, cipher)
-{
-    cipher = stringToIntList(cipher.value);
-    key = stringToIntList(key.value);
-    var table = makeTable();
-    var keyChar = 0;
-    var message = [];
-    while (message.length<cipher.length) {
-        for (var i = 0; i < cipher.length; i++) {
-            var row = table[0].indexOf(key[keyChar]);
-            var col = table[row].indexOf(cipher[i]);
-            message[message.length] = table[0][col];
-            if (keyChar<key.length-1) {
-                keyChar++;
-            } else {
-                keyChar = 0;
-            }
-        }
-    }
-    message = intsToCharList(message).join("");
-    text.value = message;
 
-}
-function makeTable()
-{
-    var table = [];
-    var minASCII = parseInt('65');
-    var maxASCII = parseInt('91');
-    var i = 0;
-    while (i+minASCII < maxASCII) {
-        var line = [];
-        for (var j = 0; j < maxASCII - minASCII; j++) {
-            if (j+i+minASCII >= maxASCII) {
-                line[line.length] = (j+i)-(maxASCII-minASCII)+minASCII;
+export function encrypt(plaintext, key) {
+    const alphabet = "abcdefghijklmnopqrstuvwxyz";
+    let ciphertext = "";
+    let j = 0;
+
+    for (let i = 0; i < plaintext.length; i++) {
+        const plainChar = plaintext[i];
+        const keyChar = key[j % key.length];
+
+        if (alphabet.includes(plainChar.toLowerCase())) {
+            const plainIndex = alphabet.indexOf(plainChar.toLowerCase());
+            const keyIndex = alphabet.indexOf(keyChar.toLowerCase());
+            const encryptedIndex = (plainIndex + keyIndex) % 26;
+            const encryptedChar = alphabet[encryptedIndex];
+
+            if (plainChar === plainChar.toUpperCase()) {
+                ciphertext += encryptedChar.toUpperCase();
             } else {
-                line[line.length] = j+i+minASCII;
+                ciphertext += encryptedChar;
             }
+
+            j++;
+        } else {
+            ciphertext += plainChar;
         }
-        table[table.length] = line;
-        i++;
     }
-    return table;
+
+    return ciphertext;
 }
-function printTable()
-{
-    var t = makeTable();
-    document.getElementById("ascii").innerHTML = "";
-    for (var i = 0; i < t.length; i++) {
-        document.getElementById("ascii").innerHTML = document.getElementById("ascii").innerHTML+
-            "<tr><td>"+intsToCharList(t[i]).join("</td><td>")+"</td></tr>";
+
+export function decrypt(ciphertext, key) {
+    const alphabet = "abcdefghijklmnopqrstuvwxyz";
+    let plaintext = "";
+    let j = 0;
+
+    for (let i = 0; i < ciphertext.length; i++) {
+        const cipherChar = ciphertext[i];
+        const keyChar = key[j % key.length];
+
+        if (alphabet.includes(cipherChar.toLowerCase())) {
+            const cipherIndex = alphabet.indexOf(cipherChar.toLowerCase());
+            const keyIndex = alphabet.indexOf(keyChar.toLowerCase());
+            const decryptedIndex = (cipherIndex - keyIndex + 26) % 26;
+            const decryptedChar = alphabet[decryptedIndex];
+
+            if (cipherChar === cipherChar.toUpperCase()) {
+                plaintext += decryptedChar.toUpperCase();
+            } else {
+                plaintext += decryptedChar;
+            }
+
+            j++;
+        } else {
+            plaintext += cipherChar;
+        }
     }
+
+    return plaintext;
 }
+
+
+

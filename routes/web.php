@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StaticPageController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,18 @@ Route::prefix('/{locale}/')->group(function () {
 
     Route::get('/homepage', [IndexController::class, 'index']);
 
+    Route::get('/forum',[\App\Http\Controllers\ForumController::class, 'index']);
+    Route::get('/forum/create/conversation',[\App\Http\Controllers\ForumController::class, 'create']);
+    Route::post('/forum/create/conversation',[\App\Http\Controllers\ForumController::class, 'store']);
+
+    Route::get('/{cipherType}/{cipher}', [StaticPageController::class, 'index']);
+    Route::post('/{cipherType}/{cipher}/comment', [CommentController::class, 'store']);
+    Route::get('/{cipherType}/{cipher}/comments', [CommentController::class, 'get']);
+    Route::get('/{cipherType}/{cipher}/test', [StaticPageController::class, 'logicPage']);
+
+    Route::get('/hash_algorithms', [\App\Http\Controllers\AlgorithmController::class, 'hash']);
+    Route::get('/classic_algorithms', [\App\Http\Controllers\AlgorithmController::class, 'classic']);
+    Route::get('/cryptographic_algorithms', [\App\Http\Controllers\AlgorithmController::class, 'crypto']);
 });
 
 
@@ -51,8 +64,9 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('{lngCode}/{cipherType}/{cipher}', [StaticPageController::class, 'index']);
-Route::get('{lngCode}/{cipherType}/{cipher}/test', [StaticPageController::class, 'logicPage']);
+
+
+
 
 
 Route::middleware('auth')->group(function () {

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Comments\Comment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -13,6 +14,8 @@ class Cypher extends Model
 
     protected $table = 'cyphers';
 
+    const CATEGORIES = ['classic_algorithms', 'hash_algorithms', 'cryptographic_algorithms'];
+
     public function ml(): HasMany
     {
         return $this->hasMany(CypherMl::class, 'cypher_id', 'id');
@@ -23,4 +26,8 @@ class Cypher extends Model
         return $this->hasOne(CypherMl::class, 'cypher_id', 'id')->where('lng_code', cLng());
     }
 
+    public function Comments()
+    {
+        return $this->hasMany(Comment::class, 'cypher_id', 'id');
+    }
 }
