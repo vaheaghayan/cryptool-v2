@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Cypher;
 
 use App\Models\Comments\Comment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

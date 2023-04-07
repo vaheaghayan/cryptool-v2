@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cypher;
+use App\Models\Cypher\Cypher;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller

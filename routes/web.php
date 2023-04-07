@@ -6,6 +6,11 @@ use App\Http\Controllers\StaticPageController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\VerificationController;
+use App\Http\Controllers\Auth\PasswordResetController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +22,39 @@ use App\Http\Controllers\CommentController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-require __DIR__ . '/auth.php';
+
+Route::prefix('/{locale}/')->group(function () {
+    $locale = request()->segment(1);
+    if (!in_array($locale, ['en', 'am'])) {
+        $locale = 'en';
+    }
+
+    App::setLocale($locale);
+
+    Route::middleware('guest')->group(function () {
+        Route::get('/user/sign-up', [RegisterController::class, 'registerForm']);
+        Route::post('/user/sign-up', [RegisterController::class, 'register']);
+        Route::get('/user/sign-up/success', [RegisterController::class, 'registerSuccess']);
+        Route::get('/user/sign-up/complete/{token}', [VerificationController::class, 'verify']);
+        Route::get('/user/sign-in', [LoginController::class, 'loginForm']);
+        Route::post('/user/sign-in', [LoginController::class, 'login']);
+
+        Route::get('/user/forgot-password', [ForgotPasswordController::class, 'forgotPasswordForm']);
+        Route::post('/user/forgot-password', [ForgotPasswordController::class, 'forgotPassword']);
+        Route::get('/user/forgot-password/success', [ForgotPasswordController::class, 'forgotPasswordSuccess']);
+
+        Route::get('/user/password-reset/complete/{token}', [PasswordResetController::class, 'passwordResetForm']);
+        Route::post('/user/password-reset/', [PasswordResetController::class, 'passwordReset']);
+        Route::get('/user/password-reset/success', [PasswordResetController::class, 'passwordResetSuccess']);
+    });
+
+    Route::middleware('auth')->group(function () {
+        Route::post('/user/logout', [LoginController::class, 'logout']);
+
+        Route::get('/user/profile', [ProfileController::class, 'profileForm']);
+    });
+});
+
 
 Route::get('/', function () {
     return redirect('en/homepage');
@@ -25,7 +62,7 @@ Route::get('/', function () {
 
 Route::prefix('/{locale}/')->group(function () {
     $locale = request()->segment(1);
-    if (!in_array(request()->segment(1), ['en', 'am'])) {
+    if (!in_array($locale, ['en', 'am'])) {
         $locale = 'en';
     }
 
@@ -37,9 +74,9 @@ Route::prefix('/{locale}/')->group(function () {
 
     Route::get('/homepage', [IndexController::class, 'index']);
 
-    Route::get('/forum',[\App\Http\Controllers\ForumController::class, 'index']);
-    Route::get('/forum/create/conversation',[\App\Http\Controllers\ForumController::class, 'create']);
-    Route::post('/forum/create/conversation',[\App\Http\Controllers\ForumController::class, 'store']);
+    Route::get('/forum', [\App\Http\Controllers\ForumController::class, 'index']);
+    Route::get('/forum/create/conversation', [\App\Http\Controllers\ForumController::class, 'create']);
+    Route::post('/forum/create/conversation', [\App\Http\Controllers\ForumController::class, 'store']);
 
     Route::get('/{cipherType}/{cipher}', [StaticPageController::class, 'index']);
     Route::post('/{cipherType}/{cipher}/comment', [CommentController::class, 'store']);
@@ -55,10 +92,6 @@ Route::prefix('/{locale}/')->group(function () {
 Route::get('/homepage', [IndexController::class, 'index']);
 Route::get('/homepage/search', [IndexController::class, 'table'])->name('search');
 
-Route::get('/classic-algorithms/atbash', [ClassicAlgController::class, 'atbash']);
-Route::get('/classic-algorithms/caesar', [ClassicAlgController::class, 'caesar']);
-Route::get('/classic-algorithms/vigenere', [ClassicAlgController::class, 'vigenere']);
-
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -69,9 +102,5 @@ Route::get('/dashboard', function () {
 
 
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+
 

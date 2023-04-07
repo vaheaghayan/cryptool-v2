@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cypher;
-use Illuminate\Http\Request;
+use App\Models\Cypher\Cypher;
 
 class AlgorithmController extends Controller
 {

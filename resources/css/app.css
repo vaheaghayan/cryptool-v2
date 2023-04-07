@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.form-group .control-label.data-req:after {
+    content:" *"!important;
+    color:red!important;
+    font-size: 1.5em;
+    vertical-align: middle;
+}
+
+.has-error input,
+.has-error textarea,
+.has-error .selector {
+    border-color: #a94442!important;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075)!important;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075)!important;
+}
+
+.form-error-text,
+.form-error-text a {
+    color: #A94442 !important;
+}

@@ -2,7 +2,7 @@
 
 namespace App\Models\Comments;
 
-use App\Models\User;
+use App\Models\User\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model

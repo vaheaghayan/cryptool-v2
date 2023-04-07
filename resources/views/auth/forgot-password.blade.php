@@ -1,35 +1,33 @@
-<x-guest-layout>
+<x-app-layout>
     <x-auth-card>
+        @vite('resources/assets/js/auth/forgot-password.js')
+
         <x-slot name="logo">
-            <a href="/">
-                <img style="width: 200px" src="{{\Illuminate\Support\Facades\URL::asset('images/CrypTool_Logo.png')}}">
+            <a href="#">
+                <img style="width: 200px" src="#">
             </a>
         </x-slot>
-
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
-        </div>
 
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
 
-        <form method="POST" action="{{ route('password.email') }}">
+        <form action="{{ url(cLng() . '/user/forgot-password') }}" id="forgot-password-form" method="post">
             @csrf
-
             <!-- Email Address -->
+            <h2>{{ __('Input the email for password reset') }}</h2>
+
             <div>
                 <x-input-label for="email" :value="__('Email')" />
-
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" />
+                <div class="form-error-email form-error-text fs14 dn"></div>
             </div>
 
+
             <div class="flex items-center justify-end mt-4">
-                <x-primary-button>
-                    {{ __('Email Password Reset Link') }}
+                <x-primary-button class="ml-3 bg-red-500">
+                    {{ __('Sent') }}
                 </x-primary-button>
             </div>
         </form>
     </x-auth-card>
-</x-guest-layout>
+</x-app-layout>
