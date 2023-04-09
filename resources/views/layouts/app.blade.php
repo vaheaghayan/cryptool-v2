@@ -56,5 +56,8 @@
     function showModal() {
         $("#myModal").modal();
     }
+
+        var $wwwUrl = '{{url('/')}}';
+        var $apiUrl = $wwwUrl;
 </script>
 </html>

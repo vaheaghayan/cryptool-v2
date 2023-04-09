@@ -1,55 +1,42 @@
-<x-guest-layout>
+<x-app-layout>
     <x-auth-card>
+        @vite('resources/assets/js/auth/login.js')
+
         <x-slot name="logo">
-            <a href="/">
-                <img style="width: 200px" src="{{\Illuminate\Support\Facades\URL::asset('images/CrypTool_Logo.png')}}">
+            <a href="#">
+                <img style="width: 200px" src="#">
             </a>
         </x-slot>
 
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
 
-        <form method="POST" action="{{ route('login') }}">
+        <form action="{{ url(cLng() . '/user/sign-in') }}" id="login-form" method="post">
             @csrf
-
             <!-- Email Address -->
             <div>
                 <x-input-label for="email" :value="__('Email')" />
-
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" />
+                <div class="form-error-email form-error-text fs14 dn"></div>
             </div>
 
             <!-- Password -->
             <div class="mt-4">
                 <x-input-label for="password" :value="__('Password')" />
-
-                <x-text-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
-
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" />
+                <div class="form-error-password form-error-text fs14 dn"></div>
             </div>
+            <div class="form-error-auth form-error-text fs14 dn"></div>
 
-            <!-- Remember Me -->
-            <div class="block mt-4">
-                <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
 
             <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
+                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ url(cLng() . '/user/sign-up') }}">
                     {{ __("you haven't registered yet?") }}
                 </a>
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
+
+                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ url(cLng() . '/user/forgot-password') }}">
+                    {{ __('Forgot your password?') }}
+                </a>
 
                 <x-primary-button class="ml-3 bg-red-500">
                     {{ __('Log in') }}
@@ -57,4 +44,4 @@
             </div>
         </form>
     </x-auth-card>
-</x-guest-layout>
+</x-app-layout>

@@ -1,38 +1,41 @@
 <nav>
-    <div class="w3-bar caret-gray-500 bg-dark  w3-card w3-left-align w3-large w3-top">
-        <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <div style="z-index: 2" class="w3-bar caret-gray-500 bg-dark  w3-card w3-left-align w3-large w3-top">
+        <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red"
+           href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i
+                class="fa fa-bars"></i></a>
         <a href="{{url(cLng() . '/homepage')}}" class="w3-bar-item text-light w3-button w3-padding-large w3-hover-white
             {{request()->segment(2) == 'homepage' ? 'w3-white text-dark' : ''}}
         ">{{__('Home')}}</a>
 
-        <a href="#" class="w3-bar-item text-light w3-button w3-hide-small w3-padding-large w3-hover-white
-            {{request()->segment(2) == 'hash_algorithms' ? 'w3-white text-dark' : ''}}
-        ">{{__('Hash Algorithms')}}</a>
-
-        <a href="#" class="w3-bar-item text-light w3-button w3-hide-small w3-padding-large w3-hover-white
-            {{request()->segment(2) == 'classic_algorithms' ? 'w3-white text-dark' : ''}}
-        ">{{__('Classic Algorithms')}}</a>
-
-        <a href="#" class="w3-bar-item text-light w3-button w3-hide-small w3-padding-large w3-hover-white
-            {{request()->segment(2) == 'cryptographic_algorithms' ? 'w3-white text-dark' : ''}}
-        ">{{__('Cryptographic Algorithms')}}</a>
+        @foreach(\App\Models\Cypher\Cypher::CATEGORIES as $category)
+            <a href="{{url(cLng() . '/' . $category)}}" class="w3-bar-item text-light w3-button w3-hide-small w3-padding-large w3-hover-white
+            {{request()->segment(2) == $category ? 'w3-white text-dark' : ''}}
+        ">{{__(ucwords(str_replace('_', ' ', $category)))}}</a>
+        @endforeach
 
         <a href="#" class="w3-bar-item text-light w3-button w3-hide-small w3-padding-large w3-hover-white
         {{request()->segment(2) == 'about' ? 'w3-white text-dark' : ''}}
         ">{{__('About')}}</a>
-        <a href="#" class="w3-bar-item text-light w3-button w3-hide-small w3-padding-large w3-hover-white">
+        <a href="{{url(cLng(). '/forum')}}"
+           class="w3-bar-item text-light w3-button w3-hide-small w3-padding-large w3-hover-white">
             {{__('Forum')}}
         </a>
 
         @auth
-        <form action="{{route("logout")}}" method="post">
-            @csrf
-            <button  class="w3-bar-item text-light  w3-right w3-button w3-hide-small w3-padding-large w3-hover-white">{{__('Logout')}}</button>
-        </form>
-        <a href="#" class="w3-bar-item text-light  w3-right w3-button w3-hide-small w3-padding-large w3-hover-white">{{__('Profile')}}</a>
+            <form action="{{ url(cLng() . '/user/logout') }}" method="post">
+                @csrf
+                <button type="submit"
+                        class="w3-bar-item text-light w3-right w3-button w3-hide-small w3-padding-large w3-hover-white">{{__('Logout')}}</button>
+            </form>
+
+            <a href="{{ url(cLng() . '/user/profile') }}"
+               class="w3-bar-item text-light  w3-right w3-button w3-hide-small w3-padding-large w3-hover-white">{{ __('Profile') }}</a>
+
         @else
-        <a href="{{route('register')}}"  class="w3-bar-item text-light  w3-right w3-button w3-hide-small w3-padding-large w3-hover-white">{{__('Register')}}</a>
-        <a href="{{route('login')}}" class="w3-bar-item text-light  w3-right w3-button w3-hide-small w3-padding-large w3-hover-white">{{__('Login')}}</a>
+            <a href="{{ url(cLng() . '/user/sign-up') }}"
+               class="w3-bar-item text-light  w3-right w3-button w3-hide-small w3-padding-large w3-hover-white">{{__('Register')}}</a>
+            <a href="{{ url(cLng() . '/user/sign-in') }}"
+               class="w3-bar-item text-light  w3-right w3-button w3-hide-small w3-padding-large w3-hover-white">{{__('Login')}}</a>
         @endauth
     </div>
 

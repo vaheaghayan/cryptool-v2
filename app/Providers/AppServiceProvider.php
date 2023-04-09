@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Comments\CommentContract;
+use App\Models\Comments\CommentManager;
+use App\Models\Conversation\ConversationContract;
+use App\Models\Conversation\ConversationManager;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +17,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(ConversationContract::class, ConversationManager::class);
+        $this->app->bind(CommentContract::class, CommentManager::class);
     }
 
     /**
