@@ -1,0 +1,27 @@
+.switch-lang:hover .lang-dropdown {
+    display: block;
+    position: fixed;
+}
+
+.lang-flag {
+    width: 40px;
+    display: inline-block;
+}
+
+.lang-dropdown {
+    display: none;
+}
+
+.selecting-lang {
+    padding: 4px 8px 4px 8px;
+}
+
+
+
+.current-lang {
+    padding: 4px 8px 4px 8px;
+    height: 50px;
+}
+.current-lang:hover {
+
+}

@@ -17,26 +17,30 @@
         {{request()->segment(2) == 'about' ? 'w3-white text-dark' : ''}}
         ">{{__('About')}}</a>
         <a href="{{url(cLng(). '/forum')}}"
-           class="w3-bar-item text-light w3-button w3-hide-small w3-padding-large w3-hover-white">
+               class="w3-bar-item text-light w3-button w3-hide-small w3-padding-large w3-hover-white">
             {{__('Forum')}}
         </a>
 
-        @auth
-            <form action="{{ url(cLng() . '/user/logout') }}" method="post">
-                @csrf
-                <button type="submit"
-                        class="w3-bar-item text-light w3-right w3-button w3-hide-small w3-padding-large w3-hover-white">{{__('Logout')}}</button>
-            </form>
+        @include('components.language-switcher')
 
-            <a href="{{ url(cLng() . '/user/profile') }}"
-               class="w3-bar-item text-light  w3-right w3-button w3-hide-small w3-padding-large w3-hover-white">{{ __('Profile') }}</a>
+        <div>
+            @auth
+                <form action="{{ url(cLng() . '/user/logout') }}" method="post">
+                    @csrf
+                    <button type="submit"
+                            class="w3-bar-item text-light w3-right w3-button w3-hide-small w3-padding-large w3-hover-white">{{__('Logout')}}</button>
+                </form>
 
-        @else
-            <a href="{{ url(cLng() . '/user/sign-up') }}"
-               class="w3-bar-item text-light  w3-right w3-button w3-hide-small w3-padding-large w3-hover-white">{{__('Register')}}</a>
-            <a href="{{ url(cLng() . '/user/sign-in') }}"
-               class="w3-bar-item text-light  w3-right w3-button w3-hide-small w3-padding-large w3-hover-white">{{__('Login')}}</a>
-        @endauth
+                <a href="{{ url(cLng() . '/user/profile') }}"
+                   class="w3-bar-item text-light  w3-right w3-button w3-hide-small w3-padding-large w3-hover-white">{{ __('Profile') }}</a>
+
+            @else
+                <a href="{{ url(cLng() . '/user/sign-up') }}"
+                   class="w3-bar-item text-light  w3-right w3-button w3-hide-small w3-padding-large w3-hover-white">{{__('Register')}}</a>
+                <a href="{{ url(cLng() . '/user/sign-in') }}"
+                   class="w3-bar-item text-light  w3-right w3-button w3-hide-small w3-padding-large w3-hover-white">{{__('Login')}}</a>
+            @endauth
+        </div>
     </div>
 
     <!-- Navbar on small screens -->
