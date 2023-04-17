@@ -5,20 +5,20 @@
                 class="fa fa-bars"></i></a>
         <a href="{{url(cLng() . '/homepage')}}" class="w3-bar-item text-light w3-button w3-padding-large w3-hover-white
             {{request()->segment(2) == 'homepage' ? 'w3-white text-dark' : ''}}
-        ">{{__('Home')}}</a>
+        ">{{__('cryptool.navigation.home')}}</a>
 
         @foreach(\App\Models\Cypher\Cypher::CATEGORIES as $category)
             <a href="{{url(cLng() . '/' . $category)}}" class="w3-bar-item text-light w3-button w3-hide-small w3-padding-large w3-hover-white
             {{request()->segment(2) == $category ? 'w3-white text-dark' : ''}}
-        ">{{__(ucwords(str_replace('_', ' ', $category)))}}</a>
+        ">{{__('cryptool.navigation.' . strtolower($category))}}</a>
         @endforeach
 
         <a href="#" class="w3-bar-item text-light w3-button w3-hide-small w3-padding-large w3-hover-white
         {{request()->segment(2) == 'about' ? 'w3-white text-dark' : ''}}
-        ">{{__('About')}}</a>
+        ">{{__('cryptool.navigation.about')}}</a>
         <a href="{{url(cLng(). '/forum')}}"
                class="w3-bar-item text-light w3-button w3-hide-small w3-padding-large w3-hover-white">
-            {{__('Forum')}}
+            {{__('cryptool.navigation.forum')}}
         </a>
 
         @include('components.language-switcher')
@@ -28,17 +28,17 @@
                 <form action="{{ url(cLng() . '/user/logout') }}" method="post">
                     @csrf
                     <button type="submit"
-                            class="w3-bar-item text-light w3-right w3-button w3-hide-small w3-padding-large w3-hover-white">{{__('Logout')}}</button>
+                            class="w3-bar-item text-light w3-right w3-button w3-hide-small w3-padding-large w3-hover-white">{{__('cryptool.navigation.logout')}}</button>
                 </form>
 
                 <a href="{{ url(cLng() . '/user/profile') }}"
-                   class="w3-bar-item text-light  w3-right w3-button w3-hide-small w3-padding-large w3-hover-white">{{ __('Profile') }}</a>
+                   class="w3-bar-item text-light  w3-right w3-button w3-hide-small w3-padding-large w3-hover-white">{{ __('cryptool.navigation.profile') }}</a>
 
             @else
                 <a href="{{ url(cLng() . '/user/sign-up') }}"
-                   class="w3-bar-item text-light  w3-right w3-button w3-hide-small w3-padding-large w3-hover-white">{{__('Register')}}</a>
+                   class="w3-bar-item text-light  w3-right w3-button w3-hide-small w3-padding-large w3-hover-white">{{__('cryptool.navigation.register')}}</a>
                 <a href="{{ url(cLng() . '/user/sign-in') }}"
-                   class="w3-bar-item text-light  w3-right w3-button w3-hide-small w3-padding-large w3-hover-white">{{__('Login')}}</a>
+                   class="w3-bar-item text-light  w3-right w3-button w3-hide-small w3-padding-large w3-hover-white">{{__('cryptool.navigation.login')}}</a>
             @endauth
         </div>
     </div>

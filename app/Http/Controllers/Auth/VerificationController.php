@@ -34,7 +34,7 @@ class VerificationController extends Controller
         });
 
         return view('auth.notification')->with([
-            'message' => __('You are successfully verified')
+            'message' => __('cryptool.verification.success')
         ]);
     }
 }
