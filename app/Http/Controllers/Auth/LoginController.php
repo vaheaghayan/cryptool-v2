@@ -24,7 +24,7 @@ class LoginController extends Controller
             return response()->json([
                 'status' => 'INVALID_DATA',
                 'errors' => [
-                    'auth' => __('You are blocked. Please try again')
+                    'auth' => __('cryptool.errors.login_bruteforce.block')
                 ]
             ]);
         }
@@ -35,7 +35,7 @@ class LoginController extends Controller
             return response()->json([
                 'status' => 'INVALID_DATA',
                 'errors' => [
-                    'auth' => __('Incorrect email or password')
+                    'auth' => __('cryptool.errors.login.invalid_credentials')
                 ]
             ]);
         }

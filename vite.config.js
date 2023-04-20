@@ -7,6 +7,8 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/css/profile.css',
+                'resources/css/language-switcher.css',
+                'resources/css/status.css',
                 'resources/js/app.js',
                 'resources/js/static/modal.js',
                 'resources/js/forum/main.js',

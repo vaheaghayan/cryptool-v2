@@ -1,10 +1,10 @@
 <x-app-layout>
     <div class="mt-5 pt-5">
         <h1 align="center">
-            {{__('CrypTool-Online')}}
+            {{__('cryptool.home_page.title')}}
         </h1>
         <h5 align="center" class="w3-text-grey">
-            {{__('CrypTool-Online (CTO for short) offers applications for testing, learning and discovering old and modern cryptography.')}}
+            {{__('cryptool.home_page.description')}}
         </h5>
         <form action="" >
             <div class="d-flex justify-content-center pt-5">
@@ -19,7 +19,7 @@
         <div>
             <div class="mb-5">
                 <h3 class="">
-                    {{__('Ciphers')}}
+                    {{__('cryptool.home_page.ciphers')}}
                     <span id="count" class="badge bg-dark badge-secondary">
                     {{$count}}
                      </span>

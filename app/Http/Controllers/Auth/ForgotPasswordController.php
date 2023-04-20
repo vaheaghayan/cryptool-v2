@@ -25,7 +25,7 @@ class ForgotPasswordController extends Controller
 
         if (!$user) {
             throw ValidationException::withMessages([
-                'auth' => __('Incorrect Email')
+                'auth' => __('cryptool.errors.forgot_password.invalid_email')
             ]);
         }
 
@@ -53,7 +53,7 @@ class ForgotPasswordController extends Controller
     public function forgotPasswordSuccess()
     {
         return view('auth.notification')->with([
-            'message' => 'Password reset link has been sent to the email address'
+            'message' => __('cryptool.errors.forgot_password.success')
         ]);
     }
     private function generateToken()

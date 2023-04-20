@@ -54,7 +54,7 @@ class PasswordResetController extends Controller
     public function passwordResetSuccess()
     {
         return view('auth.notification')->with([
-            'message' => 'Password changed successfully'
+            'message' => __('cryptool.password_reset.success')
         ]);
     }
 }

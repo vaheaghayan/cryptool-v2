@@ -3,8 +3,8 @@
         @vite('resources/assets/js/auth/forgot-password.js')
 
         <x-slot name="logo">
-            <a href="#">
-                <img style="width: 200px" src="#">
+            <a href="{{url(cLng() . '/homepage')}}">
+                <img style="width: 200px" src="{{'/images/CrypTool_Logo.png'}}">
             </a>
         </x-slot>
 
@@ -14,10 +14,12 @@
         <form action="{{ url(cLng() . '/user/forgot-password') }}" id="forgot-password-form" method="post">
             @csrf
             <!-- Email Address -->
-            <h2>{{ __('Input the email for password reset') }}</h2>
+            <h4>{{ __('cryptool.forgot_password.title') }}</h4>
+
+            <br>
 
             <div>
-                <x-input-label for="email" :value="__('Email')" />
+                <x-input-label for="email" :value="__('cryptool.forgot_password.email')" />
                 <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" />
                 <div class="form-error-email form-error-text fs14 dn"></div>
             </div>
@@ -25,7 +27,7 @@
 
             <div class="flex items-center justify-end mt-4">
                 <x-primary-button class="ml-3 bg-red-500">
-                    {{ __('Sent') }}
+                    {{ __('cryptool.forgot_password.sent') }}
                 </x-primary-button>
             </div>
         </form>

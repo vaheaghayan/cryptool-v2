@@ -6,8 +6,17 @@ use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
-    public function profileForm()
+    public function profileForm(Request $request)
     {
-        return view('profile.edit');
+        $user = $request->user();
+
+        return view('profile.edit')->with([
+            'user' => $user
+        ]);
+    }
+
+    public function edit()
+    {
+
     }
 }

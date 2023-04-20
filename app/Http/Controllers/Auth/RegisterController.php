@@ -53,7 +53,7 @@ class RegisterController extends Controller
     public function registerSuccess()
     {
         return view('auth.notification')->with([
-            'message' => __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.')
+            'message' => __('cryptool.register.success')
         ]);
     }
 
