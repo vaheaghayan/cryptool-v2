@@ -79,8 +79,6 @@ Route::prefix('/{locale}/')->group(function () {
     Route::post('/forum/create/conversation', [\App\Http\Controllers\ForumController::class, 'store']);
 
     Route::get('/{cipherType}/{cipher}', [StaticPageController::class, 'index']);
-    Route::post('/{cipherType}/{cipher}/comment', [CommentController::class, 'store']);
-    Route::get('/{cipherType}/{cipher}/comments', [CommentController::class, 'get']);
     Route::get('/{cipherType}/{cipher}/test', [StaticPageController::class, 'logicPage']);
 
     Route::get('/hash_algorithms', [\App\Http\Controllers\AlgorithmController::class, 'hash']);

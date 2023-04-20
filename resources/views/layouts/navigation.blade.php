@@ -32,7 +32,9 @@
                 </form>
 
                 <a href="{{ url(cLng() . '/user/profile') }}"
-                   class="w3-bar-item text-light  w3-right w3-button w3-hide-small w3-padding-large w3-hover-white">{{ __('cryptool.navigation.profile') }}</a>
+                   class="w3-bar-item text-light  w3-right w3-button w3-hide-small w3-padding-large w3-hover-white
+                   {{request()->segment(3) == 'profile' ? 'w3-white text-dark' : ''}}
+                   ">{{ __('cryptool.navigation.profile') }}</a>
 
             @else
                 <a href="{{ url(cLng() . '/user/sign-up') }}"
