@@ -25,9 +25,4 @@ class Cypher extends Model
     {
         return $this->hasOne(CypherMl::class, 'cypher_id', 'id')->where('lng_code', cLng());
     }
-
-    public function Comments()
-    {
-        return $this->hasMany(Comment::class, 'cypher_id', 'id');
-    }
 }

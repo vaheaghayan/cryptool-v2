@@ -19,7 +19,6 @@ export default defineConfig({
                 'resources/js/cryptographic_algorithms/aes.js',
                 'resources/js/cryptographic_algorithms/rsa.js',
                 'resources/js/hash_algorithms/md5.js',
-                'resources/js/comment.js',
                 'resources/assets/js/gform.js',
                 'resources/assets/js/auth/register.js',
                 'resources/assets/js/auth/login.js',

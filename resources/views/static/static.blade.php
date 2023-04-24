@@ -1,4 +1,5 @@
 <x-app-layout>
+    @livewireStyles
     <div style="width: 70%; margin: auto; padding-top: 80px">
         <h1 style="text-align: center; margin-bottom: 50px"> {{$cipher->current->title}}</h1>
         <div>
@@ -17,6 +18,9 @@
         </h4>
     </div>
 
+    @livewire('comments', ['cipher' => $cipher])
+
     @vite('resources/js/static/modal.js')
     @include('modals.modal')
+    @livewireScripts
 </x-app-layout>
