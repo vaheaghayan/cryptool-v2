@@ -1,5 +1,7 @@
 <x-app-layout>
     @livewireStyles
+    @vite('resources/css/comment.css')
+
     <div style="width: 70%; margin: auto; padding-top: 80px">
         <h1 style="text-align: center; margin-bottom: 50px"> {{$cipher->current->title}}</h1>
         <div>

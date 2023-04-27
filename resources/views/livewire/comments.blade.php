@@ -1,5 +1,3 @@
-@vite('resources/css/comment.css')
-
 <div class="flex justify-center">
     <div class="w-6/12">
         <h1 class="my-10 text-3xl"> Comments </h1>
@@ -8,7 +6,6 @@
                 @auth
                     <input type="text" class="w-full rounded border shadow p-2 mr-2 my-2" placeholder="What's in your mind."
                            wire:model="comment">
-                    @error('comment') <span class="error">{{ $message }}</span> @enderror
 
                     <div class="py-2">
                         <button type="submit" class="p-2 bg-blue-500 w-20 rounded shadow text-white">Add</button>
