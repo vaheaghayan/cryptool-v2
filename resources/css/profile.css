@@ -38,3 +38,161 @@
     cursor: pointer;
     border: solid 1px #BA68C8
 }
+
+
+
+/*------------------------------------avatar---------------------------------------------*/
+
+
+
+
+.upload-btn{
+    font-size:13px;
+    text-transform: uppercase;
+    color: #888;
+}
+#upload_label{
+    cursor: pointer;
+    position: absolute;
+    left: 15px;
+    top: 12px;
+    font-size: 14px;
+}
+#upload_label:hover, #upload_label:focus{
+    color: #222;
+}
+
+
+.avatar{
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    border: 2px solid #c0c0c0;
+    margin: 10px auto;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: border-color 200ms;
+}
+.avatar--upload-error{
+    border-color: #F73C3C;
+    animation: shakeNo 300ms 1 forwards;
+}
+
+.avatar:hover .avatar_upload, .avatar--hover .avatar_upload{
+    opacity: 1;
+}
+
+.avatar:hover .upload_label, .avatar--hover .upload_label{
+    display: block;
+}
+
+.avatar_img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: inPop 250ms 150ms 1 forwards cubic-bezier(0.175, 0.885, 0.32, 1.175);
+    transform: scale(0);
+    opacity: 0;
+}
+@keyframes inPop {
+    100%{
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.avatar_img--rotate90{
+    transform: rotate(90deg);
+}
+
+.avatar_upload{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    height: 100%;
+    background: #25cfe3;
+    background: rgba(44,205, 251, 0.6);
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 500ms;
+    justify-content: center;
+}
+
+.upload_label{
+    color: #111;
+    text-transform: uppercase;
+    font-size: 14px;
+    cursor: pointer;
+    white-space: nowrap;
+    padding: 4px;
+    border-radius: 3px;
+    min-width: 60px;
+    width: 100%;
+    max-width: 80px;
+    margin: auto;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #fff;
+    animation: popDown 300ms 1 forwards;
+    transform: translateY(-10px);
+    opacity: 0;
+    display: none;
+    transition: background 200ms, color 200ms;
+}
+
+@keyframes popDown{
+    100%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.upload_label:hover{
+    color: #fff;
+    background: #222;
+}
+
+#upload{
+    width: 100%;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    display: block;
+    padding: 0;
+    text-align: center;
+}
+
+.nickname{
+    text-align: center;
+    font-weight: 400;
+    font-size: 20px;
+    color: #666;
+    position: relative;
+}
+
+#name:hover{
+    outline: -webkit-focus-ring-color auto 5px;
+}
+
+.image-container {
+    width: 150px;
+    height: 150px;
+    background-color: #0a0a23;
+    position: relative;
+}
+
+.image-container img {
+    width: 150px;
+    height:150px;
+    position: absolute;
+    transform: translateY(-50%);
+}
+
+
+
+

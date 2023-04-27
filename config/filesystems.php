@@ -29,6 +29,12 @@ return [
     */
 
     'disks' => [
+        'custom' => [
+            'driver' => 'local',
+            'root' => '/vagrant',
+            'throw' => false,
+
+        ],
 
         'local' => [
             'driver' => 'local',

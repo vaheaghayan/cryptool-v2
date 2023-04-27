@@ -35,5 +35,11 @@
     "cryptool.verification.success": "Դուք հաջողությամբ վերիֆիկացվել եք",
     "cryptool.errors.forgot_password.invalid_email": "Այս Էլ․ Փոստով օգտատեր գոյություն չունի",
     "cryptool.errors.login_bruteforce.block": "Դուք արգելափակված եք։ Խնդրում եմ փորձեք որոշ ժամանակ հետո",
-    "cryptool.errors.login.invalid_credentials": "Սխալ Էլ․ Փոստ կամ Գաղտնաբառ"
+    "cryptool.errors.login.invalid_credentials": "Սխալ Էլ․ Փոստ կամ Գաղտնաբառ",
+    "cryptool.profile.title": "Պրոֆիլի Կարգավորումներ",
+    "cryptool.profile.full_name": "Անուն Ազգանուն",
+    "cryptool.profile.email": "Էլ․ Փոստ",
+    "cryptool.profile.status": "Կարգավիճակ",
+    "cryptool.profile.status.verified": "Վերիֆիկացված",
+    "cryptool.profile.status.not_verified": "Չվերիֆիկացված"
 }

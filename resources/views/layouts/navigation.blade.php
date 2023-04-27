@@ -38,31 +38,14 @@
 
             @else
                 <a href="{{ url(cLng() . '/user/sign-up') }}"
-                   class="w3-bar-item text-light  w3-right w3-button w3-hide-small w3-padding-large w3-hover-white">{{__('cryptool.navigation.register')}}</a>
+                   class="w3-bar-item text-light  w3-right w3-button w3-hide-small w3-padding-large w3-hover-white
+                   {{request()->segment(3) == 'sign-up' ? 'w3-white text-dark' : ''}}
+                   ">{{__('cryptool.navigation.register')}}</a>
                 <a href="{{ url(cLng() . '/user/sign-in') }}"
-                   class="w3-bar-item text-light  w3-right w3-button w3-hide-small w3-padding-large w3-hover-white">{{__('cryptool.navigation.login')}}</a>
+                   class="w3-bar-item text-light  w3-right w3-button w3-hide-small w3-padding-large w3-hover-white
+                   {{request()->segment(3) == 'sign-in' ? 'w3-white text-dark' : ''}}
+                   ">{{__('cryptool.navigation.login')}}</a>
             @endauth
         </div>
     </div>
-
-    <!-- Navbar on small screens -->
-    <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large w3-top mt-14">
-        <a href="#" class="w3-bar-item w3-button w3-padding-large">{{__('Hash Algorithms')}}</a>
-        <a href="#" class="w3-bar-item w3-button w3-padding-large">{{__('Classic Algorithms')}}</a>
-        <a href="#" class="w3-bar-item w3-button w3-padding-large">{{__('Cryptographic Algorithms')}}</a>
-        <a href="#" class="w3-bar-item w3-button w3-padding-large">{{__('About')}}</a>
-    </div>
 </nav>
-
-<script>
-    // Used to toggle the menu on small screens when clicking on the menu button
-    function myFunction() {
-        var x = document.getElementById("navDemo");
-        if (x.className.indexOf("w3-show") == -1) {
-            x.className += " w3-show";
-        } else {
-            x.className = x.className.replace(" w3-show", "");
-        }
-    }
-
-</script>

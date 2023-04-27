@@ -2,6 +2,7 @@
 
 namespace App\Models\User;
 
+use App\Models\UserInformation;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -18,4 +19,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
     ];
+
+    public function info()
+    {
+        return $this->hasOne(UserInformation::class, 'user_id', 'id');
+    }
 }

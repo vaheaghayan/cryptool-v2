@@ -35,6 +35,12 @@
     "cryptool.verification.success": "You are successfully verified",
     "cryptool.errors.forgot_password.invalid_email": "User with this email doesn't exists",
     "cryptool.errors.login_bruteforce.block": "You are blocked. Please try again",
-    "cryptool.errors.login.invalid_credentials": "Incorrect email or password"
+    "cryptool.errors.login.invalid_credentials": "Incorrect email or password",
+    "cryptool.profile.title": "Profile Settings",
+    "cryptool.profile.full_name": "Full Name",
+    "cryptool.profile.email": "Email",
+    "cryptool.profile.status": "Status",
+    "cryptool.profile.status.verified": "Verified",
+    "cryptool.profile.status.not_verified": "Not Verified"
 
 }
