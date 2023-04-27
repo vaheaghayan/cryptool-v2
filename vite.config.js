@@ -9,6 +9,7 @@ export default defineConfig({
                 'resources/css/profile.css',
                 'resources/css/language-switcher.css',
                 'resources/css/status.css',
+                'resources/css/comment.css',
                 'resources/js/app.js',
                 'resources/js/static/modal.js',
                 'resources/js/forum/main.js',

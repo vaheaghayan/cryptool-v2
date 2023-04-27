@@ -1,3 +1,5 @@
+@vite('resources/css/comment.css')
+
 <div class="flex justify-center">
     <div class="w-6/12">
         <h1 class="my-10 text-3xl"> Comments </h1>
@@ -21,12 +23,22 @@
 
         @foreach($comments as $comment)
             <div class="rounded border shadow p-3 my-2">
-                <div class="flex justify-between my-2">
-                    <div class="flex">
-                        <p class="font-bold text-lg"> {{$comment->user->full_name}} </p>
-                        <p class="mx-3 py-1 text-xs text-gray-500 font-semibold"> {{ date('Y-m-d H:i', strtotime($comment->created_at)) }} </p>
+                <div class="my-2 comment-header">
+                    <div class="d-flex justify-content-between align-items-center ">
+                        <div class="avatar">
+                            <img src="{{ url('/images/' . $comment->user->info->avatar) }}" id="avatar-image"  class="avatar_img">
+                        </div>
+                        <div>
+                            <p class="font-bold text-lg"> {{$comment->user->full_name}} </p>
+                        </div>
+
+
+                        <div class="ml-auto">
+                            <p class="mx-3 py-1 text-xs text-gray-500 font-semibold"> {{ date('Y-m-d H:i', strtotime($comment->created_at)) }} </p>
+                        </div>
                     </div>
                 </div>
+
                 <p class="text-gray-800"> {{$comment->body}} </p>
             </div>
         @endforeach
