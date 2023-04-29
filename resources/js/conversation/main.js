@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $("#conversation-create-btn").click(function(){
+    $("#message-btn").click(function(){
         $("#myModal").modal('show');
     });
 });

@@ -5,7 +5,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StaticPageController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CommentController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\VerificationController;
@@ -74,9 +73,8 @@ Route::prefix('/{locale}/')->group(function () {
 
     Route::get('/homepage', [IndexController::class, 'index']);
 
+    Route::get('/forum/conversation/{id}', [\App\Http\Controllers\ConversationController::class, 'index']);
     Route::get('/forum', [\App\Http\Controllers\ForumController::class, 'index']);
-    Route::get('/forum/create/conversation', [\App\Http\Controllers\ForumController::class, 'create']);
-    Route::post('/forum/create/conversation', [\App\Http\Controllers\ForumController::class, 'store']);
 
     Route::get('/{cipherType}/{cipher}', [StaticPageController::class, 'index']);
     Route::get('/{cipherType}/{cipher}/test', [StaticPageController::class, 'logicPage']);

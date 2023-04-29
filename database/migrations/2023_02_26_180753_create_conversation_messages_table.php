@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('conversation_messages', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
-            $table->bigInteger('chat_id');
-            $table->string('message');
+            $table->bigInteger('conversation_id');
+            $table->string('body');
             $table->timestamps();
         });
     }

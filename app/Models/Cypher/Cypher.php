@@ -14,7 +14,7 @@ class Cypher extends Model
 
     protected $table = 'cyphers';
 
-    const CATEGORIES = ['classic_algorithms', 'hash_algorithms', 'cryptographic_algorithms'];
+    const CATEGORIES = ['classic_algorithms', 'hash_algorithms', 'symmetric_algorithms', 'asymmetric_algorithms'];
 
     public function ml(): HasMany
     {

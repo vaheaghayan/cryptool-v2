@@ -2,16 +2,11 @@
 
 namespace App\Models\Conversation;
 
+use App\Models\User\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Conversation extends Model
 {
-    const CATEGORIES = [
-        'classic_algorithms',
-        'hash_algorithms',
-        'cryptographic_algorithms'
-    ];
-
     protected $table = 'conversations';
 
     protected $fillable = [
@@ -23,6 +18,11 @@ class Conversation extends Model
 
     public function messages()
     {
-        return $this->hasMany(ConversationMessage::class, 'chat_id', 'id');
+        return $this->hasMany(ConversationMessage::class, 'conversation_id', 'id');
+    }
+
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'author_id', 'id');
     }
 }

@@ -9,6 +9,12 @@ class ConversationMessage extends Model
 {
     protected $table = 'conversation_messages';
 
+    protected $fillable = [
+        'user_id',
+        'conversation_id',
+        'body',
+    ];
+
     public function user()
     {
         return $this->hasOne(User::class, 'id', 'user_id');
