@@ -10,6 +10,9 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Auth\PasswordResetController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\ConversationController;
+use App\Http\Controllers\ForumController;
+use App\Http\Controllers\AlgorithmInnerPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,21 +76,17 @@ Route::prefix('/{locale}/')->group(function () {
 
     Route::get('/homepage', [IndexController::class, 'index']);
 
-    Route::get('/forum/conversation/{id}', [\App\Http\Controllers\ConversationController::class, 'index']);
-    Route::get('/forum', [\App\Http\Controllers\ForumController::class, 'index']);
+    Route::get('/forum/conversation/{id}', [ConversationController::class, 'index']);
+    Route::get('/forum', [ForumController::class, 'index']);
+
+    Route::get('/{cipherCategory}/inner', [AlgorithmInnerPageController::class, 'index']);
 
     Route::get('/{cipherType}/{cipher}', [StaticPageController::class, 'index']);
     Route::get('/{cipherType}/{cipher}/test', [StaticPageController::class, 'logicPage']);
-
-    Route::get('/hash_algorithms', [\App\Http\Controllers\AlgorithmController::class, 'hash']);
-    Route::get('/classic_algorithms', [\App\Http\Controllers\AlgorithmController::class, 'classic']);
-    Route::get('/cryptographic_algorithms', [\App\Http\Controllers\AlgorithmController::class, 'crypto']);
 });
-
 
 Route::get('/homepage', [IndexController::class, 'index']);
 Route::get('/homepage/search', [IndexController::class, 'table'])->name('search');
-
 
 Route::get('/dashboard', function () {
     return view('dashboard');

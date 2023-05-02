@@ -12,6 +12,8 @@
     "cryptool.navigation.profile": "Profile",
     "cryptool.navigation.login": "Login",
     "cryptool.navigation.register": "Register",
+    "cryptool.navigation.symmetric_algorithms": "Symmetric Algorithms",
+    "cryptool.navigation.asymmetric_algorithms": "Asymmetric Algorithms",
     "cryptool.login.email": "Email",
     "cryptool.login.password": "Password",
     "cryptool.login.not_registered": "you haven't registered yet?",
@@ -41,6 +43,22 @@
     "cryptool.profile.email": "Email",
     "cryptool.profile.status": "Status",
     "cryptool.profile.status.verified": "Verified",
-    "cryptool.profile.status.not_verified": "Not Verified"
+    "cryptool.profile.status.not_verified": "Not Verified",
+    "cryptool.forum.page_title": "Conversations",
+    "cryptool.forum.author": "Author",
+    "cryptool.forum.messages": "Messages",
+    "cryptool.forum.create_conversation": "Create Conversations",
+    "cryptool.forum.conversation.subject": "Subject",
+    "cryptool.forum.conversation.description": "Description",
+    "cryptool.forum.conversation.add": "Add",
+    "cryptool.forum.conversation.placeholder.enter_subject": "Enter Subject",
+    "cryptool.forum.conversation.placeholder.enter_description": "Enter Description",
+    "cryptool.conversation.posted_on": "Posted On",
+    "cryptool.conversation.messages": "Messages",
+    "cryptool.conversation.message": "Message",
+    "cryptool.conversation.message.add": "Add",
+    "cryptool.conversation.add_message": "Add Message",
+    "cryptool.conversation.submit": "Submit",
+    "": ""
 
 }

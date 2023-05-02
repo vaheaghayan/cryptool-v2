@@ -8,7 +8,7 @@
         ">{{__('cryptool.navigation.home')}}</a>
 
         @foreach(\App\Models\Cypher\Cypher::CATEGORIES as $category)
-            <a href="{{url(cLng() . '/' . $category)}}" class="w3-bar-item text-light w3-button w3-hide-small w3-padding-large w3-hover-white
+            <a href="{{url(cLng() . '/' . $category . '/inner')}}" class="w3-bar-item text-light w3-button w3-hide-small w3-padding-large w3-hover-white
             {{request()->segment(2) == $category ? 'w3-white text-dark' : ''}}
         ">{{__('cryptool.navigation.' . strtolower($category))}}</a>
         @endforeach
