@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\Verify;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -43,6 +44,12 @@ class Kernel extends HttpKernel
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+
+        'livewire' => [
+            \App\Http\Middleware\Authenticate::class,
+            \App\Http\Middleware\Verify::class,
+        ]
+
     ];
 
     /**
@@ -62,6 +69,6 @@ class Kernel extends HttpKernel
         'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'verified' => \App\Http\Middleware\Verify::class,
     ];
 }

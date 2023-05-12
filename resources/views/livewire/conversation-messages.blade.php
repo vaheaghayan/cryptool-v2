@@ -22,7 +22,7 @@
 
                     <hr>
 
-                    @foreach($conversationMessages as $conversationMessage)
+                    @foreach($conversationMessages[0] as $conversationMessage)
                         <div class="message-box border rounded p-3 mt-2">
                             <div class="d-flex align-items-center justify-content-between">
                                 <div class="flex items-center">
@@ -36,7 +36,7 @@
                                 <div class="flex center">
                                     <p class="text-muted mr-2"> {{ $conversationMessage->created_at }} </p>
                                     @if(\Illuminate\Support\Facades\Auth::id() == $conversationMessage->user->id)
-                                        <button class="btn btn-link text-danger p-0" >
+                                        <button class="btn btn-link text-danger p-0" wire:click="removeMessage({{$conversationMessage->id}})">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
                                                 <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
                                             </svg>
@@ -48,7 +48,7 @@
                         </div>
                     @endforeach
 
-                    {{ $conversationMessages->links() }}
+                    {{ $conversationMessages[0]->links() }}
                 </div>
             </div>
         </div>
@@ -60,7 +60,7 @@
                     <form wire:submit.prevent="saveMessage">
                         <div class="form-group">
                             <label for="comment-message"> {{ __('cryptool.conversation.message') }} </label>
-                            <textarea class="form-control" wire:model="message" id="comment-message" rows="3"></textarea>
+                            <textarea class="form-control" wire:model.lazy="message" id="comment-message" rows="3"></textarea>
                         </div>
 
                         @auth()

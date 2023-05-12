@@ -1,9 +1,8 @@
-
 <form wire:submit.prevent="save">
     <div class="avatar" id="avatar">
         <div id="preview">
             <div class="image-container">
-                @if($photo && explode('/',$photo->getMimeType())[0] == 'image')
+                @if($photo && explode('/', $photo->getMimeType())[0] == 'image')
                     <img src="{{$photo->temporaryUrl()}}" id="avatar-image"  class="avatar_img">
                 @else
                     @if($user->info && $user->info->avatar)

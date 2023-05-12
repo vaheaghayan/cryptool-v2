@@ -10,12 +10,11 @@
         </div>
 
         <h4 style="margin-top: 50px">
-            You can also test the ciphers
 
             @auth()
-                <a href="{{url(cLng() . '/' . $cipher->category .'/' . strtolower($cipher->name) .' /test')}}"><button type="button" class="btn btn-secondary">Run the cypher</button></a>
+                <a href="{{url(cLng() . '/' . $cipher->category .'/' . strtolower($cipher->name) .' /test')}}"><button type="button" class="btn btn-secondary">Test the cypher</button></a>
             @else
-                <button type="button" id="btn" class="btn btn-secondary">Run the cypher</button>
+                <button type="button" id="btn" class="btn btn-secondary">Test the cypher</button>
             @endauth
         </h4>
     </div>

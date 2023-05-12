@@ -44,6 +44,7 @@
     "cryptool.profile.status": "Կարգավիճակ",
     "cryptool.profile.status.verified": "Վերիֆիկացված",
     "cryptool.profile.status.not_verified": "Չվերիֆիկացված",
+    "cryptool.profile.upload": "Վերբեռնել",
     "cryptool.forum.page_title": "Քննարկումներ",
     "cryptool.forum.author": "Հեղինակ",
     "cryptool.forum.messages": "Նամակներ",
@@ -58,5 +59,8 @@
     "cryptool.conversation.message": "Նամակ",
     "cryptool.conversation.message.add": "Ստեղծել",
     "cryptool.conversation.add_message": "Ավելացնել Նամակ",
-    "cryptool.conversation.submit": "Ավելացնել"
+    "cryptool.conversation.submit": "Ավելացնել",
+    "cryptool.profile.label.institute": "Ինստիտուտ",
+    "cryptool.profile.department": "Բաշին",
+    "cryptool.profile.course": "Կուրս"
 }

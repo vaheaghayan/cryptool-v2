@@ -3,24 +3,33 @@
     <div class="row pt-5">
         <div class="col-md-8">
             @foreach($conversations as $conversation)
-                <a href="{{ url(cLng() . '/forum/conversation/' . $conversation->id) }}" class="text-decoration-none">
                     <div class="card mb-3">
                         <div class="card-body d-flex align-items-between">
-                            <div class="avatar mr-5">
-                                <img src="{{ url('/images/' . $conversation->author->info->avatar) }}" id="avatar-image" class="avatar_img">
-                            </div>
-                            <div class="flex-grow-1">
-                                <h5 class="card-title mb-0">{{ $conversation->title }}</h5>
-                                <small class="text-muted"> {{ __('cryptool.forum.author') . ' ' . $conversation->author->full_name }}</small>
-                                <p class="card-text">{{ $conversation->description }}</p>
-                            </div>
+                                <div class="avatar mr-5">
+                                    <img src="{{ url('/images/' . $conversation->author->info->avatar) }}" id="avatar-image" class="avatar_img">
+                                </div>
+
+                                <div class="flex-grow-1">
+                                    <a href="{{ url(cLng() . '/forum/conversation/' . $conversation->id) }}" class="text-decoration-none">
+                                        <h5 class="card-title mb-0">{{ $conversation->title }}</h5>
+                                        <small class="text-muted"> {{ __('cryptool.forum.author') . ' ' . $conversation->author->full_name }}</small>
+                                        <p class="card-text">{{ $conversation->description }}</p>
+                                    </a>
+                                </div>
+
                             <div class="d-flex align-items-center">
                                 <div class="mr-3 text-black">{{ __('cryptool.forum.messages') }}</div>
-                                <span id="count" class="badge bg-dark badge-secondary">{{ $conversation->messages->count() }}</span>
+                                <span id="count" class="badge bg-dark badge-secondary mr-2">{{ $conversation->messages->count() }}</span>
+                                @if(\Illuminate\Support\Facades\Auth::id() == $conversation->author->id)
+                                    <button class="btn btn-link text-danger p-0" wire:click="removeConversation({{$conversation->id}})">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                                        </svg>
+                                    </button>
+                                @endif
                             </div>
                         </div>
                     </div>
-                </a>
             @endforeach
                 {{ $conversations->links() }}
         </div>

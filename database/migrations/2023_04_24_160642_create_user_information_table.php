@@ -6,26 +6,16 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('user_information', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
-            $table->text('avatar');
+            $table->text('avatar')->default('default_avatar.jpg');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('user_information');

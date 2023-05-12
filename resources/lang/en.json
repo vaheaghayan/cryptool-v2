@@ -25,7 +25,7 @@
     "cryptool.register.confirm_password": "Password Confirmation",
     "cryptool.register.already_registered": "Already registered?",
     "cryptool.register.register": "Register",
-    "cryptool.forgot_password.title": "Input the email for password reset",
+    "cryptool.forgot_password.title": "Password Reset",
     "cryptool.forgot_password.email": "Email",
     "cryptool.forgot_password.sent": "Sent",
     "cryptool.password_reset.password": "Password",
@@ -44,6 +44,7 @@
     "cryptool.profile.status": "Status",
     "cryptool.profile.status.verified": "Verified",
     "cryptool.profile.status.not_verified": "Not Verified",
+    "cryptool.profile.upload": "Upload",
     "cryptool.forum.page_title": "Conversations",
     "cryptool.forum.author": "Author",
     "cryptool.forum.messages": "Messages",
@@ -59,6 +60,8 @@
     "cryptool.conversation.message.add": "Add",
     "cryptool.conversation.add_message": "Add Message",
     "cryptool.conversation.submit": "Submit",
-    "": ""
+    "cryptool.profile.label.institute": "Institute",
+    "cryptool.profile.department": "Department",
+    "cryptool.profile.course": "Course"
 
 }

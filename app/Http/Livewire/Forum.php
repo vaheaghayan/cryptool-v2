@@ -14,6 +14,8 @@ class Forum extends Component
     public $title;
     public $description;
 
+    protected $middleware = ['livewire'];
+
     public function __construct($id = null)
     {
         parent::__construct($id);
@@ -42,6 +44,11 @@ class Forum extends Component
         return view('livewire.forum')->with(
             ['conversations' => $this->getConversations()]
         );
+    }
+
+    public function removeConversation($id)
+    {
+        Conversation::where('id', $id)->delete();
     }
 
     private function getConversations()

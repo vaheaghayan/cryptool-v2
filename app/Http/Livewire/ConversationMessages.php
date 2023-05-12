@@ -13,10 +13,14 @@ class ConversationMessages extends Component
 
     public $message;
     public $conversation;
+    public $conversationMessages;
+
+    protected $middleware = ['livewire'];
 
     public function __construct($id = null)
     {
         parent::__construct($id);
+
     }
 
     public function mount($conversation)
@@ -36,9 +40,18 @@ class ConversationMessages extends Component
 
     public function render()
     {
-        return view('livewire.conversation-messages')->with([
-            'conversationMessages' => $this->getMessages()
-        ]);
+        $this->conversationMessages = [$this->getMessages()];
+
+        return view('livewire.conversation-messages')
+//            ->with([
+//            'conversationMessages' => $this->getMessages()
+//        ])
+            ;
+    }
+
+    public function removeMessage($id)
+    {
+        ConversationMessage::where('id', $id)->delete();
     }
 
     protected function getMessages()

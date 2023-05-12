@@ -82,17 +82,13 @@ Route::prefix('/{locale}/')->group(function () {
     Route::get('/{cipherCategory}/inner', [AlgorithmInnerPageController::class, 'index']);
 
     Route::get('/{cipherType}/{cipher}', [StaticPageController::class, 'index']);
-    Route::get('/{cipherType}/{cipher}/test', [StaticPageController::class, 'logicPage']);
+    Route::middleware('auth')->group(function () {
+        Route::get('/{cipherType}/{cipher}/test', [StaticPageController::class, 'logicPage']);
+    });
 });
 
 Route::get('/homepage', [IndexController::class, 'index']);
 Route::get('/homepage/search', [IndexController::class, 'table'])->name('search');
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-
 
 
 

@@ -29,15 +29,7 @@
                                 <input type="text" class="form-control" value="{{ $user->email }}" readonly>
                             </div>
 
-                            <div class="col-md-12">
-                                <br>
-                                <label class="labels">{{ __('cryptool.profile.status') }}</label>
-                                @if($user->status == \App\Models\User\User::STATUS_VERIFIED)
-                                    <p class="status open"> {{__('cryptool.profile.status.verified')}} </p>
-                                @else
-                                    <p class="status dead"> {{__('cryptool.profile.status.not_verified')}} </p>
-                                @endif
-                            </div>
+
                             <br>
                         </div>
 
@@ -48,15 +40,15 @@
                                 </div>
                                 <div class="col-md-12">
                                     <label class="labels">{{ __('cryptool.profile.label.institute') }}</label>
-                                    <input type="text" class="form-control" placeholder="experience" value="">
+                                    <input type="text" class="form-control" value="">
                                 </div>
                                 <div class="col-md-12">
                                     <label class="labels">{{ __('cryptool.profile.department') }}</label>
-                                    <input type="text" class="form-control" placeholder="additional details" value="">
+                                    <input type="text" class="form-control" value="">
                                 </div>
                                 <div class="col-md-12">
                                     <label class="labels">{{ __('cryptool.profile.course') }}</label>
-                                    <input type="number" min="1" max="5" class="form-control" placeholder="additional details" value="">
+                                    <input type="number" min="1" max="5" class="form-control" value="">
                                 </div>
                             </div>
                         </div>
