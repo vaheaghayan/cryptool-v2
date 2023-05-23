@@ -62,5 +62,8 @@
     "cryptool.conversation.submit": "Ավելացնել",
     "cryptool.profile.label.institute": "Ինստիտուտ",
     "cryptool.profile.department": "Բաշին",
-    "cryptool.profile.course": "Կուրս"
+    "cryptool.profile.course": "Կուրս",
+    "cryptool.category_inner_page.algorithms": "Ալգորիթմները",
+    "cryptool.navigation.categories": "Կատեգորիաներ",
+    "cryptool.forum.conversation.create": "Ստեղծել"
 }

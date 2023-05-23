@@ -20,6 +20,6 @@ class StaticPageController extends Controller
         $cipherName = $request->route()->parameter('cipher');
         $cipher = Cypher::where('name', $cipherName)->with('current')->first();
 
-        return view('static.algorithm')->with(['cipher' => $cipher]);;
+        return view('static.algorithm')->with(['cipher' => $cipher]);
     }
 }

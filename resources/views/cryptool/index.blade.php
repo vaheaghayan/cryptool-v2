@@ -28,7 +28,7 @@
 
             @foreach($ciphers as $cipher)
             <div class="border rounded w-75 ciphers" style="margin-top: 10px"  id="{{$cipher->name}}">
-                <a href="{{url(cLng() . '/'. $cipher->category .'/' . $cipher->name)}}" class="row py-3 m-0 align-items-center text-decoration-none">
+                <a href="{{url(cLng() . '/'. $cipher->category->alias .'/' . $cipher->name)}}" class="row py-3 m-0 align-items-center text-decoration-none">
                     <div class="col col-auto col-md-2  col-lg-1 text-center w3-border-right">
                         <img style="width: 42px; height: 42px" src="{{'/images/' . $cipher->icon}}" >
                     </div>

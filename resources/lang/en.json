@@ -51,6 +51,7 @@
     "cryptool.forum.create_conversation": "Create Conversations",
     "cryptool.forum.conversation.subject": "Subject",
     "cryptool.forum.conversation.description": "Description",
+    "cryptool.forum.conversation.create": "Create",
     "cryptool.forum.conversation.add": "Add",
     "cryptool.forum.conversation.placeholder.enter_subject": "Enter Subject",
     "cryptool.forum.conversation.placeholder.enter_description": "Enter Description",
@@ -62,6 +63,9 @@
     "cryptool.conversation.submit": "Submit",
     "cryptool.profile.label.institute": "Institute",
     "cryptool.profile.department": "Department",
-    "cryptool.profile.course": "Course"
+    "cryptool.profile.course": "Course",
+    "cryptool.category_inner_page.algorithms": "Algorithms",
+    "cryptool.navigation.categories": "Categories"
+
 
 }

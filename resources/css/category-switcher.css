@@ -1,0 +1,30 @@
+.category-dropdown {
+    display: none;
+}
+
+.switch-category:hover .category-dropdown {
+    display: block;
+    position: fixed;
+}
+
+.category-flag {
+    width: 300px;
+    display: inline-block;
+}
+
+
+
+.selecting-category {
+}
+
+
+
+.current-category {
+    height: 51px;
+}
+.current-category:hover {
+
+}
+
+.selecting-category:hover a{
+}
