@@ -12,6 +12,9 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('user_id');
             $table->text('avatar')->default('default_avatar.jpg');
+            $table->text('institute')->nullable();
+            $table->text('course')->nullable();
+            $table->text('department')->nullable();
             $table->timestamps();
         });
     }

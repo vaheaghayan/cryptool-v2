@@ -40,7 +40,7 @@ class RegisterController extends Controller
 
         $url = url(cLng() . '/user/sign-up/complete/' . $token);
 
-        Mail::to($user)->send(new EmailVerify($user, $url));
+//        Mail::to($user)->send(new EmailVerify($user, $url));
 
         return response()->json([
             'status' => 'OK',

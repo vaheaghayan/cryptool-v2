@@ -8,6 +8,9 @@ class UserInformation extends Model
 {
     protected $fillable = [
         'user_id',
-        'avatar'
+        'avatar',
+        'institute',
+        'department',
+        'course'
     ];
 }

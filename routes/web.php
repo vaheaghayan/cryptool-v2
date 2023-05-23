@@ -54,6 +54,8 @@ Route::prefix('/{locale}/')->group(function () {
         Route::post('/user/logout', [LoginController::class, 'logout']);
 
         Route::get('/user/profile', [ProfileController::class, 'profileForm']);
+
+        Route::post('/user/profile/save', [ProfileController::class, 'save']);
     });
 });
 
